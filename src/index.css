@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern Dark Portfolio Design System for Tirth Patel */
+
+@layer base {
+  :root {
+    /* Dark theme base */
+    --background: 218 23% 5%;
+    --foreground: 210 40% 95%;
+
+    --card: 220 23% 8%;
+    --card-foreground: 210 40% 95%;
+
+    --popover: 220 23% 8%;
+    --popover-foreground: 210 40% 95%;
+
+    /* Bright blue primary accent */
+    --primary: 195 100% 50%;
+    --primary-foreground: 220 23% 5%;
+
+    /* Subtle secondary */
+    --secondary: 220 25% 12%;
+    --secondary-foreground: 210 40% 95%;
+
+    --muted: 220 25% 12%;
+    --muted-foreground: 210 20% 65%;
+
+    /* Teal accent for variety */
+    --accent: 180 100% 40%;
+    --accent-foreground: 220 23% 5%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 25% 15%;
+    --input: 220 25% 15%;
+    --ring: 195 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom design tokens */
+    --hero-gradient: linear-gradient(135deg, hsl(218 23% 5%), hsl(220 25% 8%));
+    --accent-gradient: linear-gradient(135deg, hsl(195 100% 50%), hsl(180 100% 40%));
+    --card-gradient: linear-gradient(135deg, hsl(220 23% 8%), hsl(220 25% 10%));
+    
+    /* Shadows with blue glow */
+    --shadow-glow: 0 0 40px hsl(195 100% 50% / 0.15);
+    --shadow-card: 0 10px 30px -10px hsl(195 100% 50% / 0.1);
+    
+    /* Smooth transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
