@@ -29,8 +29,8 @@ const Contact = () => {
     {
       icon: ExternalLink,
       label: "Portfolio",
-      value: "Coming soon at tirthdev.in",
-      href: "https://www.tirthdev.in",
+      value: "You're already on my portfolio website.",
+      href: null,
     },
     {
       icon: Mail,
