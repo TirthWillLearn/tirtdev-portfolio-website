@@ -41,7 +41,7 @@ const Hero = () => {
           {/* Content */}
           <div className="space-y-8 animate-fade-in">
             <div className="space-y-4">
-              <h1 className="text-lg text-primary font-medium">
+              <h1 className="text-lg text-primary font-medium pt-6 md:pt-0">
                 👋 Hello Mate
               </h1>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
@@ -106,15 +106,13 @@ const Hero = () => {
           </div>
 
           {/* Hero Image */}
-          <div className="relative animate-slide-in-right">
+          <div className="relative animate-slide-in-right pb-6 pr-6">
             <div className="relative">
               <div className="absolute inset-0 bg-accent-gradient rounded-2xl blur-2xl opacity-20 animate-glow-pulse" />
               <img
                 src={heroImage}
                 alt="Tirth Patel - Backend Developer"
                 className="relative z-10 w-full max-w-md mx-auto rounded-2xl shadow-2xl border border-primary/20 object-top"
-
-                // className="relative z-10 w-full max-w-md mx-auto rounded-2xl shadow-2xl border border-primary/20"
               />
 
               {/* Badge */}
