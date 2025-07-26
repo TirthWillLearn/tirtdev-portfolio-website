@@ -13,6 +13,7 @@ const Navigation = () => {
     { name: "Skills", href: "/skills" },
     { name: "Services", href: "/services" },
     { name: "Projects", href: "/projects" },
+    { name: "Resume", href: "/resume" },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -23,7 +24,10 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="text-xl font-bold text-primary hover:text-accent transition-colors">
+          <Link
+            to="/"
+            className="text-xl font-bold text-primary hover:text-accent transition-colors"
+          >
             Tirth<span className="text-accent">Dev</span>
           </Link>
 
