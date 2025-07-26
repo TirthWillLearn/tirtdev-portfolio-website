@@ -93,14 +93,11 @@ const Hero = () => {
                   <Linkedin className="w-5 h-5" />
                 </a>
               </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <a
-                  href="https://www.tirthdev.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+              <Button variant="ghost" size="sm" asChild>
+                <Link to="/resume">
+                  View Resume
                   <ExternalLink className="w-5 h-5" />
-                </a>
+                </Link>
               </Button>
             </div>
           </div>
