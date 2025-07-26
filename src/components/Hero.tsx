@@ -52,10 +52,14 @@ const Hero = () => {
                 </span>
               </h2>
               <div className="space-y-2 text-lg text-muted-foreground">
-                <p>API Specialist | Full-Stack Learner</p>
+                <p>
+                  Backend Developer | Practical Problem Solver & Real-World
+                  Learner
+                </p>
                 <p className="max-w-lg">
                   I build fast, secure, and scalable backend systems using
-                  Node.js, Express, and databases like MySQL & MongoDB.
+                  Node.js, Express, and MySQL — with lightweight React frontends
+                  to showcase project functionality.
                 </p>
               </div>
             </div>
