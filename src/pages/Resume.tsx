@@ -19,7 +19,7 @@ const Resume = () => {
             {/* Download Button */}
             <div className="text-center mb-12">
               <a
-                href="https://drive.google.com/file/d/1eh9s0TG32jxaunszNnNrc9K2GEKOsi-y/view"
+                href="https://drive.google.com/file/d/18ffPnLaN1lszVogSTgS2o1f-QrTP1TkF/view"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -32,7 +32,7 @@ const Resume = () => {
             {/* Resume Preview */}
             <div className="max-w-screen-xl mx-auto rounded-xl overflow-hidden shadow-card animate-fade-in">
               <iframe
-                src="https://drive.google.com/file/d/1eh9s0TG32jxaunszNnNrc9K2GEKOsi-y/preview"
+                src="https://drive.google.com/file/d/18ffPnLaN1lszVogSTgS2o1f-QrTP1TkF/preview"
                 allow="autoplay"
                 className="w-full h-[80vh] border border-primary/20 rounded-lg"
               ></iframe>
