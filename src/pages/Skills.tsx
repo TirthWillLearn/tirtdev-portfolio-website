@@ -19,18 +19,19 @@ const Skills = () => {
     { name: "Node.js & Express.js", level: 70, icon: Code },
     { name: "MySQL & SQL Queries", level: 60, icon: Database },
     { name: "JWT & Cookie-based Auth", level: 65, icon: Shield },
-    { name: "Git & GitHub", level: 65, icon: GitBranch },
+    { name: "Git & GitHub", level: 60, icon: GitBranch },
+    { name: "Linux CLI", level: 50, icon: Terminal },
     { name: "Postman", level: 85, icon: Target },
-    { name: "Linux CLI", level: 55, icon: Terminal },
-    { name: "AWS (EC2, RDS)", level: 55, icon: Cloud },
-    { name: "React, HTML, CSS , JavaScript", level: 65, icon: Code },
+    { name: "Web Deployment (Render, Vercel, AWS)", level: 60, icon: Cloud },
+    { name: "AWS (EC2, RDS)", level: 50, icon: Cloud },
+    { name: "React, HTML, CSS, JavaScript", level: 60, icon: Code },
   ];
 
   const softSkills = [
-    { name: "Problem-solving", level: 65, icon: Brain },
-    { name: "Self-learning", level: 85, icon: Brain },
-    { name: "Communication", level: 75, icon: MessageSquare },
-    { name: "Time Management", level: 65, icon: Clock },
+    { name: "Problem-solving", level: 60, icon: Brain },
+    { name: "Self-learning", level: 80, icon: Brain },
+    { name: "Communication", level: 60, icon: MessageSquare },
+    { name: "Time Management", level: 75, icon: Clock },
   ];
 
   const SkillCard = ({ skill, index }: { skill: any; index: number }) => (
