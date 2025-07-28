@@ -11,6 +11,10 @@ const Layout = ({ children }: LayoutProps) => {
       <Navigation />
       <main className="pt-16">
         {children}
+        <footer className="text-sm text-muted-foreground text-center py-6 border-t border-border mt-20">
+          © 2025 <span className="text-primary font-medium">Tirth Patel</span>.
+          All rights reserved.
+        </footer>
       </main>
     </div>
   );
