@@ -1,11 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const [theme, setTheme] = useState("dark");
+
+  // Theme setup on mount
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme") || "dark";
+    setTheme(storedTheme);
+    document.documentElement.classList.add(storedTheme);
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.classList.remove("dark", "light");
+    document.documentElement.classList.add(newTheme);
+  };
 
   const navigation = [
     { name: "Home", href: "/" },
@@ -33,7 +49,7 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-8 items-center">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -52,22 +68,33 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* Contact Button */}
-          <div className="hidden md:block">
-            <Button variant="outline" size="sm" asChild>
-              <Link to="/contact">Let's Talk</Link>
+          <div className="flex items-center gap-2">
+            {/* Theme Toggle Button (Always Visible) */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-md text-muted-foreground hover:text-primary transition-colors"
+              title="Toggle Theme"
+            >
+              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+
+            {/* Contact Button (Desktop Only) */}
+            <div className="hidden md:block">
+              <Button variant="outline" size="sm" asChild>
+                <Link to="/contact">Let's Talk</Link>
+              </Button>
+            </div>
+
+            {/* Mobile menu button */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
             </Button>
           </div>
-
-          {/* Mobile menu button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
-          </Button>
         </div>
 
         {/* Mobile Navigation */}
@@ -87,6 +114,7 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
+
             <Button variant="outline" size="sm" className="w-full" asChild>
               <Link to="/contact" onClick={() => setIsOpen(false)}>
                 Let's Talk
