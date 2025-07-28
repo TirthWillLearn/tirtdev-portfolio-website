@@ -29,7 +29,7 @@ const Navigation = () => {
             to="/"
             className="text-2xl tracking-wide font-bold text-primary hover:text-accent transition-colors"
           >
-            Tirth<span className="text-accent">Dev</span>
+            Tirth<span className="text-accent"> Patel</span>
           </Link>
 
           {/* Desktop Navigation */}
