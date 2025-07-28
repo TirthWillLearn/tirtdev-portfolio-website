@@ -27,7 +27,7 @@ const Navigation = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="text-xl font-bold text-primary hover:text-accent transition-colors"
+            className="text-2xl tracking-wide font-bold text-primary hover:text-accent transition-colors"
           >
             Tirth<span className="text-accent">Dev</span>
           </Link>
