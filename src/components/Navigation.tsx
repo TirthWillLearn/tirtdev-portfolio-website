@@ -43,9 +43,9 @@ const Navigation = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="text-2xl tracking-wide font-bold text-primary hover:text-accent transition-colors"
+            className="text-2xl tracking-wide font-bold bg-accent-gradient bg-clip-text text-transparent transition-all duration-300 hover:brightness-110 hover:saturate-150"
           >
-            Tirth<span className="text-accent"> Patel</span>
+            Tirth Patel
           </Link>
 
           {/* Desktop Navigation */}
