@@ -39,18 +39,13 @@ const Skills = () => {
       className="bg-card-gradient border-primary/20 p-6 shadow-card hover:shadow-glow transition-all duration-300 animate-fade-in"
       style={{ animationDelay: `${index * 0.1}s` }}
     >
-      <div className="flex items-center gap-3 mb-4">
-        <div className="bg-primary/10 p-2 rounded-lg">
+      <div className="flex items-center gap-4">
+        <div className="bg-primary/10 border border-primary rounded-md p-2 shadow-md">
           <skill.icon className="w-5 h-5 text-primary" />
         </div>
-        <h3 className="font-semibold">{skill.name}</h3>
-      </div>
-      <div className="space-y-2">
-        <div className="flex justify-between text-sm">
-          <span className="text-muted-foreground">Proficiency</span>
-          <span className="text-primary font-medium">{skill.level}%</span>
-        </div>
-        <Progress value={skill.level} className="h-2" />
+        <h3 className="font-semibold text-base text-foreground">
+          {skill.name}
+        </h3>
       </div>
     </Card>
   );
@@ -140,3 +135,18 @@ const Skills = () => {
 };
 
 export default Skills;
+
+{
+  /* Commented out the Proficiency & Progress bar section */
+}
+{
+  /*
+      <div className="space-y-2">
+        <div className="flex justify-between text-sm">
+          <span className="text-muted-foreground">Proficiency</span>
+          <span className="text-primary font-medium">{skill.level}%</span>
+        </div>
+        <Progress value={skill.level} className="h-2" />
+      </div>
+      */
+}
