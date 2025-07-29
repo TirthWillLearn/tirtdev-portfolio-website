@@ -8,6 +8,7 @@ import {
   Server,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Typewriter } from "react-simple-typewriter";
 import heroImage from "@/assets/IMG_0498 2.jpg";
 
 const Hero = () => {
@@ -52,10 +53,22 @@ const Hero = () => {
                 </span>
               </h2>
               <div className="space-y-2 text-lg text-muted-foreground">
-                <p>
-                  Backend Developer | Practical Problem Solver & Real-World
-                  Learner
-                </p>
+                <span className="bg-accent-gradient bg-clip-text text-transparent font-semibold text-xl md:text-xl tracking-wide leading-relaxed">
+                  <Typewriter
+                    words={[
+                      "Backend Developer",
+                      "Node.js & Express Enthusiast",
+                      "MySQL & REST API Learner",
+                      "Open to Collaborate & Grow",
+                    ]}
+                    loop
+                    cursor
+                    cursorStyle="|"
+                    typeSpeed={70}
+                    deleteSpeed={50}
+                    delaySpeed={1500}
+                  />
+                </span>
                 <p className="max-w-lg">
                   I build fast, secure, and scalable backend systems using
                   Node.js, Express, and MySQL — with lightweight React frontends
