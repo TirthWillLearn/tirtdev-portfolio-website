@@ -20,11 +20,12 @@ const Skills = () => {
     { name: "MySQL & SQL Queries", level: 60, icon: Database },
     { name: "JWT & Cookie-based Auth", level: 65, icon: Shield },
     { name: "Git & GitHub", level: 60, icon: GitBranch },
+    { name: "JavaScript (ES6+)", level: 60, icon: Code },
+    { name: "React (API-driven frontend development)", level: 60, icon: Code },
     { name: "Linux CLI", level: 50, icon: Terminal },
     { name: "Postman", level: 85, icon: Target },
-    { name: "Web Deployment (Render, Vercel, AWS)", level: 60, icon: Cloud },
+    { name: "Web Deployment (Render, Vercel)", level: 60, icon: Cloud },
     { name: "AWS (EC2, RDS)", level: 50, icon: Cloud },
-    { name: "React, HTML, CSS, JavaScript", level: 60, icon: Code },
   ];
 
   const softSkills = [
