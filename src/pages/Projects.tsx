@@ -17,7 +17,7 @@ const Projects = () => {
       id: 1,
       title: "Bookstore API",
       description:
-        "A secure RESTful API with user authentication, Stripe payments, and smart recommendations via Google AI. Features comprehensive user management, book catalog, and intelligent recommendation system.",
+        "A production-ready RESTful API with JWT-based authentication, role-based access control, and cloud database integration. Includes book catalog management, ratings, and extensible AI-assisted features.",
       image: "/api/placeholder/400/250",
       techStack: [
         "Node.js",
@@ -29,13 +29,13 @@ const Projects = () => {
         "Google AI",
       ],
       features: [
-        "JWT & Cookie Authentication",
-        "Stripe Payment Integration",
-        "AI-powered Recommendations",
-        "Secure User Management",
+        "JWT-based Authentication & RBAC",
+        "Book Catalog, Ratings & Reviews",
+        "Cloud Database (AWS RDS)",
+        "Optional AI-assisted Search (Experimental)",
       ],
       githubUrl: "https://github.com/TirthWillLearn/bookstore-api",
-      liveUrl: null,
+      liveUrl: "https://bookstore-api-czay.onrender.com",
       icon: Database,
     },
     {
