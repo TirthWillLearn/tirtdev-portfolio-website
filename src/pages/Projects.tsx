@@ -8,6 +8,9 @@ import {
   Database,
   Shield,
   Zap,
+  BookOpen,
+  ShoppingCart,
+  Briefcase,
   Brain,
 } from "lucide-react";
 
@@ -15,49 +18,72 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "Bookstore API",
+      title: "Multi-Vendor Order Management API",
       description:
-        "A production-ready RESTful API with JWT-based authentication, role-based access control, and cloud database integration. Includes book catalog management, ratings, and extensible AI-assisted features.",
+        "A scalable backend API for a multi-vendor system supporting buyers and sellers. Implements secure authentication, transactional order processing, and optimized SQL queries to handle concurrent operations and large datasets.",
       image: "/api/placeholder/400/250",
       techStack: [
         "Node.js",
         "Express",
-        "MySQL",
-        "Stripe",
+        "TypeScript",
+        "PostgreSQL",
         "JWT",
-        "Cookies",
-        "Google AI",
+        "Docker",
       ],
       features: [
-        "JWT-based Authentication & RBAC",
-        "Book Catalog, Ratings & Reviews",
-        "Cloud Database (AWS RDS)",
+        "JWT Authentication & Role-Based Access (Buyer/Seller)",
+        "Order Creation with SQL Transactions for Data Consistency",
+        "Row-level Locking (SELECT FOR UPDATE) to Prevent Race Conditions",
+        "Pagination, Filtering, and Sorting for Scalable APIs",
+        "Optimized Queries using JOINs to Avoid N+1 Problems",
+        "Global Error Handling, Validation & Rate Limiting",
+        "Dockerized Backend & Cloud Deployment (Render)",
+      ],
+      githubUrl: "https://github.com/TirthWillLearn/Order-Management-API",
+      liveUrl: "https://order-management-api-ruqo.onrender.com",
+      icon: ShoppingCart,
+    },
+    {
+      id: 2,
+      title: "Bookstore API",
+      description:
+        "A RESTful backend API for managing books, users, and reviews with secure authentication and scalable architecture. Supports role-based access control, cloud database integration, and optional AI-assisted search features.",
+      image: "/api/placeholder/400/250",
+      techStack: ["Node.js", "Express", "MySQL", "JWT", "Stripe", "AWS RDS"],
+      features: [
+        "JWT Authentication & Role-Based Access Control (RBAC)",
+        "Book Catalog with Ratings & Reviews System",
+        "Cloud-hosted MySQL Database (AWS RDS)",
+        "Secure Payment Integration with Stripe",
         "Optional AI-assisted Search (Experimental)",
       ],
       githubUrl: "https://github.com/TirthWillLearn/bookstore-api",
       liveUrl: "https://bookstore-api-czay.onrender.com",
-      icon: Database,
+      icon: BookOpen,
     },
     {
-      id: 2,
+      id: 3,
       title: "Job Portal API",
       description:
-        "A comprehensive backend system for job seekers and employers with robust authentication and AI-based job filtering. Includes advanced search capabilities and user role management.",
+        "A backend API for job seekers and employers supporting job listings, applications, and role-based authentication. Built with guidance and iterative improvements, focusing on API design and backend workflows.",
       image: "/api/placeholder/400/250",
-      techStack: ["Node.js", "Express", "MySQL", "JWT", "Cookies", "Google AI"],
+      techStack: ["Node.js", "Express.js", "MySQL", "JWT", "REST API"],
       features: [
-        "Multi-role Authentication",
-        "AI Job Filtering",
-        "Advanced Search API",
-        "Application Management",
+        "User Authentication & Role-Based Access (Employer / Candidate)",
+        "Job Listings and Application Management APIs",
+        "Search and Filtering Endpoints",
+        "Basic AI-assisted job filtering (experimental)",
       ],
       githubUrl: "https://github.com/TirthWillLearn/job-portal-api",
       liveUrl: null,
-      icon: Shield,
+      icon: Briefcase,
     },
   ];
 
-  const ProjectCard = ({ project, index }: { project: any; index: number }) => (
+  const ProjectCard = ({ project, index }: { project: any; index: number }) => {
+  const Icon = project.icon;
+
+  return (
     <Card
       className="bg-card-gradient border-primary/20 overflow-hidden shadow-card hover:shadow-glow transition-all duration-300 group animate-fade-in"
       style={{ animationDelay: `${index * 0.1}s` }}
@@ -65,7 +91,7 @@ const Projects = () => {
       {/* Project Image/Icon */}
       <div className="relative h-48 bg-secondary/50 flex items-center justify-center">
         <div className="bg-primary/10 p-6 rounded-full">
-          <project.icon className="w-12 h-12 text-primary" />
+          <Icon className="w-12 h-12 text-primary" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
       </div>
@@ -112,7 +138,7 @@ const Projects = () => {
         {/* Actions */}
         <div className="flex gap-2 pt-2">
           <Button variant="outline" size="sm" className="flex-1" asChild>
-            <a
+            
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -123,7 +149,7 @@ const Projects = () => {
           </Button>
           {project.liveUrl && (
             <Button variant="default" size="sm" className="flex-1" asChild>
-              <a
+              
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -137,6 +163,7 @@ const Projects = () => {
       </div>
     </Card>
   );
+};
 
   return (
     <Layout>
