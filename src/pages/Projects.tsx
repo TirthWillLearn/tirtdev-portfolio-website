@@ -1,17 +1,7 @@
 import Layout from "@/components/Layout";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import {
-  Github,
-  ExternalLink,
-  Shield,
-  Zap,
-  BookOpen,
-  ShoppingCart,
-  Briefcase,
-  Brain,
-} from "lucide-react";
+import { Github, ExternalLink, Shield, Zap, Brain } from "lucide-react";
 
 const Projects = () => {
   const projects = [
@@ -39,7 +29,6 @@ const Projects = () => {
       ],
       githubUrl: "https://github.com/TirthWillLearn/Order-Management-API",
       liveUrl: "https://order-management-api-ruqo.onrender.com",
-      icon: ShoppingCart,
     },
     {
       id: 2,
@@ -56,7 +45,6 @@ const Projects = () => {
       ],
       githubUrl: "https://github.com/TirthWillLearn/bookstore-api",
       liveUrl: "https://bookstore-api-czay.onrender.com",
-      icon: BookOpen,
     },
     {
       id: 3,
@@ -72,88 +60,62 @@ const Projects = () => {
       ],
       githubUrl: "https://github.com/TirthWillLearn/job-portal-api",
       liveUrl: null,
-      icon: Briefcase,
     },
   ];
 
-  const ProjectCard = ({ project, index }: { project: any; index: number }) => {
-    const Icon = project.icon;
-
+  const ProjectCard = ({ project }: { project: any }) => {
     return (
-      <Card
-        className="bg-card-gradient border-primary/20 overflow-hidden shadow-card hover:shadow-glow transition-all duration-300 group animate-fade-in"
-        style={{ animationDelay: `${index * 0.1}s` }}
-      >
-        <div className="relative h-48 bg-secondary/50 flex items-center justify-center">
-          <div className="bg-primary/10 p-6 rounded-full">
-            <Icon className="w-12 h-12 text-primary" />
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
+      <Card className="border border-border p-6 shadow-sm hover:shadow-md transition flex flex-col">
+        {/* Title */}
+        <h3 className="text-xl font-semibold text-primary mb-2">
+          {project.title}
+        </h3>
+
+        {/* Tech Stack */}
+        <div className="flex flex-wrap gap-2 mb-3">
+          {project.techStack.map((tech: string) => (
+            <span
+              key={tech}
+              className="text-xs px-2 py-1 rounded-md bg-primary/10 text-primary"
+            >
+              {tech}
+            </span>
+          ))}
         </div>
 
-        <div className="p-6 space-y-4">
-          <div>
-            <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-              {project.title}
-            </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              {project.description}
-            </p>
-          </div>
+        {/* Description */}
+        <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+          {project.description}
+        </p>
 
-          <div className="space-y-2">
-            <h4 className="font-semibold text-sm">Key Features:</h4>
-            <div className="space-y-1">
-              {project.features.map((feature: string, featureIndex: number) => (
-                <div key={featureIndex} className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-                  <span className="text-xs text-muted-foreground">
-                    {feature}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
+        {/* Features */}
+        <div className="mb-4">
+          <h4 className="text-sm font-medium mb-2">Key Highlights:</h4>
+          <ul className="space-y-1">
+            {project.features.map((feature: string, i: number) => (
+              <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                <span className="text-primary">•</span>
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
 
-          <div>
-            <h4 className="font-semibold text-sm mb-2">Tech Stack:</h4>
-            <div className="flex flex-wrap gap-2">
-              {project.techStack.map((tech: string) => (
-                <Badge
-                  key={tech}
-                  variant="secondary"
-                  className="text-xs bg-primary/10 text-primary hover:bg-primary/20"
-                >
-                  {tech}
-                </Badge>
-              ))}
-            </div>
-          </div>
+        {/* Buttons */}
+        <div className="flex gap-2 mt-auto">
+          <Button variant="outline" size="sm" className="flex-1" asChild>
+            <a href={project.githubUrl} target="_blank">
+              Code
+            </a>
+          </Button>
 
-          <div className="flex gap-2 pt-2">
-            <Button variant="outline" size="sm" className="flex-1" asChild>
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github className="w-4 h-4 mr-2" />
-                Code
+          {project.liveUrl && (
+            <Button size="sm" className="flex-1" asChild>
+              <a href={project.liveUrl} target="_blank">
+                Live
               </a>
             </Button>
-            {project.liveUrl && (
-              <Button variant="default" size="sm" className="flex-1" asChild>
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  Live Demo
-                </a>
-              </Button>
-            )}
-          </div>
+          )}
         </div>
       </Card>
     );
@@ -163,28 +125,32 @@ const Projects = () => {
     <Layout>
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-screen-xl mx-auto">
-            <div className="text-center mb-16 animate-fade-in">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <div className="max-w-5xl mx-auto">
+            {/* Heading */}
+            <div className="text-center mb-12">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">
                 My <span className="text-primary">Projects</span>
               </h1>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Here are some of the backend projects I've built, showcasing my
-                skills in API development and system architecture
+              <p className="text-muted-foreground max-w-xl mx-auto">
+                Backend projects focused on API design, scalability, and system
+                reliability.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 mb-16">
-              {projects.map((project, index) => (
-                <ProjectCard key={project.id} project={project} index={index} />
+            {/* Projects Grid */}
+            <div className="grid md:grid-cols-2 gap-6 mb-14">
+              {projects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
               ))}
             </div>
 
-            <Card className="bg-card-gradient border-primary/20 p-8 shadow-card animate-fade-in mb-16">
-              <h3 className="text-2xl font-bold mb-8 text-center">
+            {/* What I Build */}
+            <Card className="border border-border p-8 shadow-sm mb-14">
+              <h3 className="text-xl font-semibold mb-6 text-center">
                 What I Build
               </h3>
-              <div className="grid md:grid-cols-3 gap-6">
+
+              <div className="grid md:grid-cols-3 gap-6 text-center">
                 {[
                   {
                     icon: Zap,
@@ -205,14 +171,14 @@ const Projects = () => {
                       "Smart features powered by modern AI services and machine learning",
                   },
                 ].map((item) => {
-                  const ItemIcon = item.icon;
+                  const Icon = item.icon;
                   return (
-                    <div key={item.title} className="text-center">
-                      <div className="bg-primary/10 p-4 rounded-lg w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                        <ItemIcon className="w-8 h-8 text-primary" />
+                    <div key={item.title}>
+                      <div className="bg-primary/10 p-4 rounded-lg w-14 h-14 mx-auto mb-3 flex items-center justify-center">
+                        <Icon className="w-6 h-6 text-primary" />
                       </div>
-                      <h4 className="font-semibold mb-2">{item.title}</h4>
-                      <p className="text-sm text-muted-foreground">
+                      <h4 className="font-medium mb-1">{item.title}</h4>
+                      <p className="text-xs text-muted-foreground">
                         {item.description}
                       </p>
                     </div>
@@ -221,27 +187,25 @@ const Projects = () => {
               </div>
             </Card>
 
-            <Card className="bg-card-gradient border-primary/20 p-8 text-center shadow-card animate-fade-in">
-              <h3 className="text-2xl font-bold mb-4">
+            {/* CTA */}
+            <Card className="border border-border p-8 text-center shadow-sm">
+              <h3 className="text-xl font-semibold mb-3">
                 More Projects Coming Soon
               </h3>
-              <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                I'm constantly working on new projects and exploring
-                cutting-edge technologies. Follow my GitHub to stay updated with
-                my latest work.
+              <p className="text-muted-foreground mb-5 max-w-xl mx-auto">
+                I'm constantly building and improving backend systems. Check my
+                GitHub for latest work.
               </p>
-              <div className="flex justify-center gap-4">
+
+              <div className="flex justify-center gap-3">
                 <Button variant="outline" asChild>
-                  <a
-                    href="https://github.com/TirthWillLearn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href="https://github.com/TirthWillLearn" target="_blank">
                     <Github className="w-4 h-4 mr-2" />
-                    GitHub Profile
+                    GitHub
                   </a>
                 </Button>
-                <Button variant="default" asChild>
+
+                <Button asChild>
                   <a href="/contact">Work With Me</a>
                 </Button>
               </div>
