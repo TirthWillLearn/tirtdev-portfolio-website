@@ -1,147 +1,116 @@
 import { Button } from "@/components/ui/button";
-import {
-  Github,
-  Linkedin,
-  ExternalLink,
-  Code,
-  Database,
-  Server,
-} from "lucide-react";
+import { Github, Linkedin, ExternalLink, Database, Server } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 import heroImage from "@/assets/IMG_0498 2.jpg";
 
 const Hero = () => {
   const techIcons = [
-    { icon: Code, label: "Full-Stack", position: "top-20 right-20" },
-    { icon: Database, label: "Database", position: "top-32 left-16" },
-    { icon: Server, label: "Backend", position: "bottom-32 right-16" },
+    { icon: Database, label: "Database", position: "top-28 left-16" },
+    { icon: Server, label: "Backend", position: "bottom-28 right-16" },
   ];
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-hero-gradient" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(195_100%_50%_/_0.05),transparent_70%)]" />
+      {/* Softer Background */}
+      <div className="absolute inset-0 bg-hero-gradient opacity-70" />
 
-      {/* Floating Tech Icons */}
+      {/* Floating Icons (reduced) */}
       {techIcons.map((tech, index) => (
         <div
           key={tech.label}
-          className={`absolute hidden lg:block ${tech.position} animate-float`}
-          style={{ animationDelay: `${index * 0.5}s` }}
+          className={`absolute hidden lg:block ${tech.position}`}
         >
-          <div className="bg-card/50 backdrop-blur-sm border border-primary/20 rounded-lg p-3 shadow-card hover:shadow-glow transition-all duration-300">
-            <tech.icon className="w-6 h-6 text-primary" />
+          <div className="bg-card/40 border border-border rounded-md p-2 shadow-sm">
+            <tech.icon className="w-5 h-5 text-primary" />
           </div>
         </div>
       ))}
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 items-center">
           {/* Content */}
-          <div className="space-y-8 animate-fade-in">
-            <div className="space-y-4">
-              <h1 className="text-lg text-primary font-medium pt-6 md:pt-0">
-                👋 Hello Mate
-              </h1>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                I'm <span className="text-primary">Tirth Patel</span>
-                <br />a{" "}
-                <span className="bg-accent-gradient bg-clip-text text-transparent">
-                  Backend Developer
-                </span>
-              </h2>
-              <div className="space-y-2 text-lg text-muted-foreground">
-                <span className="bg-accent-gradient bg-clip-text text-transparent font-semibold text-xl md:text-xl tracking-wide leading-relaxed">
-                  <Typewriter
-                    words={[
-                      "Backend Developer",
-                      "Node.js & Express Enthusiast",
-                      "MySQL & REST API Learner",
-                      "Open to Collaborate & Grow",
-                    ]}
-                    loop
-                    cursor
-                    cursorStyle="|"
-                    typeSpeed={70}
-                    deleteSpeed={50}
-                    delaySpeed={1500}
-                  />
-                </span>
-                <p className="max-w-lg">
-                  I build fast, secure, and scalable backend systems using
-                  Node.js, Express, and MySQL — with lightweight React frontends
-                  to showcase project functionality.
-                </p>
-              </div>
+          <div className="space-y-6">
+            <h1 className="text-sm text-primary font-medium">👋 Hello</h1>
+
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+              I'm <span className="text-primary">Tirth Patel</span>
+              <br />
+              <span className="text-foreground">Backend Developer</span>
+            </h2>
+
+            {/* Typewriter (fixed content) */}
+            <div className="text-lg text-muted-foreground font-medium">
+              <Typewriter
+                words={[
+                  "Building scalable APIs",
+                  "Handling transactions & concurrency",
+                  "Designing reliable backend systems",
+                ]}
+                loop
+                cursor
+                cursorStyle="|"
+                typeSpeed={70}
+                deleteSpeed={40}
+                delaySpeed={1500}
+              />
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="lg" asChild>
+            <p className="max-w-lg text-muted-foreground">
+              I build backend systems using Node.js, Express, and SQL databases
+              — focusing on performance, data consistency, and clean
+              architecture.
+            </p>
+
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button size="lg" asChild>
                 <Link to="/projects">View Projects</Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <Link to="/contact">Contact Me</Link>
+                <Link to="/contact">Contact</Link>
               </Button>
             </div>
 
-            {/* Social Links */}
-            <div className="flex gap-4">
+            {/* Social */}
+            <div className="flex gap-3">
               <Button variant="ghost" size="icon" asChild>
-                <a
-                  href="https://github.com/TirthWillLearn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="https://github.com/TirthWillLearn" target="_blank">
                   <Github className="w-5 h-5" />
                 </a>
               </Button>
+
               <Button variant="ghost" size="icon" asChild>
-                <a
-                  href="https://linkedin.com/in/tirth-k-patel"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="https://linkedin.com/in/tirth-k-patel" target="_blank">
                   <Linkedin className="w-5 h-5" />
                 </a>
               </Button>
+
               <Button
                 variant="ghost"
-                className="h-10 px-4 flex items-center gap-2"
+                className="flex items-center gap-2"
                 asChild
               >
                 <Link to="/resume">
-                  View Resume
-                  <ExternalLink className="w-5 h-5" />
+                  Resume
+                  <ExternalLink className="w-4 h-4" />
                 </Link>
               </Button>
             </div>
           </div>
 
-          {/* Hero Image */}
-          <div className="relative animate-slide-in-right pb-6 pr-6">
-            <div className="relative">
-              <div className="absolute inset-0 bg-accent-gradient rounded-2xl blur-2xl opacity-20 animate-glow-pulse" />
-              <img
-                src={heroImage}
-                alt="Tirth Patel - Backend Developer"
-                className="relative z-10 w-full max-w-md mx-auto rounded-2xl shadow-2xl border border-primary/20 object-top"
-              />
+          {/* Image (reduced glow) */}
+          <div className="relative">
+            <img
+              src={heroImage}
+              alt="Tirth Patel"
+              className="w-full max-w-sm mx-auto rounded-xl shadow-md border border-border"
+            />
 
-              {/* Badge */}
-              <div className="absolute -bottom-4 -right-4 z-20 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium shadow-glow">
-                Available for work
-              </div>
+            <div className="absolute -bottom-3 -right-3 bg-primary text-white px-3 py-1 rounded-full text-xs shadow-sm">
+              Available
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary/30 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse" />
         </div>
       </div>
     </section>
