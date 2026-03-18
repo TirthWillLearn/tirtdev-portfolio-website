@@ -1,14 +1,6 @@
 import Layout from "@/components/Layout";
 import { Card } from "@/components/ui/card";
-import {
-  Code,
-  Database,
-  Cloud,
-  GitBranch,
-  Terminal,
-  Shield,
-  Brain,
-} from "lucide-react";
+import { Code, Database, Cloud, GitBranch, Shield, Brain } from "lucide-react";
 
 const Skills = () => {
   const skillGroups = [
@@ -104,6 +96,86 @@ const Skills = () => {
                 </Card>
               ))}
             </div>
+
+            {/* Backend Thinking Section */}
+            <Card className="border border-border p-8 shadow-sm mt-12">
+              <h3 className="text-xl font-semibold mb-6 text-center">
+                How I Think as a Backend Developer
+              </h3>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-sm">
+                <div>
+                  <h4 className="font-semibold mb-2">API Design</h4>
+                  <p className="text-muted-foreground">
+                    Designed RESTful APIs with proper route structure, status
+                    codes, and separation of concerns using controllers and
+                    services.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold mb-2">Database Queries</h4>
+                  <p className="text-muted-foreground">
+                    Wrote optimized SQL queries with joins, filtering, and
+                    pagination.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold mb-2">Transactions</h4>
+                  <p className="text-muted-foreground">
+                    Used transactions to ensure atomic operations during order
+                    processing.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold mb-2">Concurrency Control</h4>
+                  <p className="text-muted-foreground">
+                    Prevented race conditions using SELECT FOR UPDATE.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold mb-2">Authentication</h4>
+                  <p className="text-muted-foreground">
+                    Implemented JWT-based authentication and role-based access
+                    control.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold mb-2">Error Handling</h4>
+                  <p className="text-muted-foreground">
+                    Built centralized error handling middleware for consistent
+                    responses.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold mb-2">Performance</h4>
+                  <p className="text-muted-foreground">
+                    Improved performance using pagination and query
+                    optimization.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold mb-2">Deployment</h4>
+                  <p className="text-muted-foreground">
+                    Deployed apps using Docker, AWS (EC2, RDS), and Render.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold mb-2">API Testing</h4>
+                  <p className="text-muted-foreground">
+                    Tested endpoints using Postman for edge cases and
+                    validation.
+                  </p>
+                </div>
+              </div>
+            </Card>
           </div>
         </div>
       </section>
