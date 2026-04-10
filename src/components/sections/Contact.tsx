@@ -359,6 +359,7 @@ const Contact = () => {
               ["📍", "Mumbai, India · open to relocation"],
               ["⏱", "Immediate joiner · Full-time only"],
               ["🎓", "BCA · Hinduja College Mumbai (2024)"],
+              ["💻", "Open to remote · hybrid · on-site"],
             ].map(([icon, text]) => (
               <div
                 key={text as string}
