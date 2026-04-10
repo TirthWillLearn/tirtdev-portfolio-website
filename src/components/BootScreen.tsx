@@ -19,12 +19,24 @@ const lineColor = (type: BootLine["type"]): string => {
 };
 
 const BootScreen = ({ lines, onSkip, exiting }: BootScreenProps) => {
-  const endRef = useRef<HTMLDivElement>(null);
+  // ❌ removed unused endRef
 
-  // 🔥 NEW: typing state
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // typing state
   const [displayedLines, setDisplayedLines] = useState<string[]>([]);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
+
+  // ✅ FIXED SCROLL (no jump, always bottom)
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    requestAnimationFrame(() => {
+      el.scrollTop = el.scrollHeight;
+    });
+  }, [displayedLines]);
 
   useEffect(() => {
     if (currentLineIndex >= lines.length) return;
@@ -32,32 +44,33 @@ const BootScreen = ({ lines, onSkip, exiting }: BootScreenProps) => {
     const currentLine = lines[currentLineIndex].t;
 
     if (currentCharIndex < currentLine.length) {
-      const timeout = setTimeout(() => {
-        setDisplayedLines((prev) => {
-          const copy = [...prev];
-          copy[currentLineIndex] =
-            (copy[currentLineIndex] || "") + currentLine[currentCharIndex];
-          return copy;
-        });
+      const timeout = setTimeout(
+        () => {
+          setDisplayedLines((prev) => {
+            const copy = [...prev];
+            copy[currentLineIndex] =
+              (copy[currentLineIndex] || "") + currentLine[currentCharIndex];
+            return copy;
+          });
 
-        setCurrentCharIndex((prev) => prev + 1);
-      }, 8); // typing speed
+          setCurrentCharIndex((prev) => prev + 1);
+        },
+        4 + Math.random() * 16, // ✅ more natural typing
+      );
 
       return () => clearTimeout(timeout);
     } else {
-      // move to next line
-      const timeout = setTimeout(() => {
-        setCurrentLineIndex((prev) => prev + 1);
-        setCurrentCharIndex(0);
-      }, 60);
+      const timeout = setTimeout(
+        () => {
+          setCurrentLineIndex((prev) => prev + 1);
+          setCurrentCharIndex(0);
+        },
+        120 + Math.random() * 180, // ✅ better system delay
+      );
 
       return () => clearTimeout(timeout);
     }
   }, [currentCharIndex, currentLineIndex, lines]);
-
-  useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [displayedLines]);
 
   return (
     <div
@@ -117,6 +130,7 @@ const BootScreen = ({ lines, onSkip, exiting }: BootScreenProps) => {
 
         {/* terminal */}
         <div
+          ref={containerRef}
           style={{
             flex: 1,
             overflowY: "auto",
@@ -158,19 +172,19 @@ const BootScreen = ({ lines, onSkip, exiting }: BootScreenProps) => {
             );
           })}
 
-          {/* blinking cursor */}
-          <span
-            style={{
-              display: "inline-block",
-              width: "8px",
-              height: "14px",
-              background: C.green,
-              marginLeft: "4px",
-              animation: "blink 1s infinite",
-            }}
-          />
-
-          <div ref={endRef} />
+          {/* blinking cursor (only while typing) */}
+          {currentLineIndex < lines.length && (
+            <span
+              style={{
+                display: "inline-block",
+                width: "8px",
+                height: "14px",
+                background: C.green,
+                marginLeft: "4px",
+                animation: "blink 1s infinite",
+              }}
+            />
+          )}
         </div>
 
         {/* footer */}
