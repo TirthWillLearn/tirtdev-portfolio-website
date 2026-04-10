@@ -5,6 +5,12 @@
   text-align: center;
 }
 
+
+/* 🔥 KILLS SCROLL JUMP COMPLETELY */
+* {
+  overflow-anchor: none;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

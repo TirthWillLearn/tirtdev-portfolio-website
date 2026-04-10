@@ -1,143 +1,241 @@
-import { Button } from "@/components/ui/button";
-import { Github, Linkedin, ExternalLink, Database, Server } from "lucide-react";
-import { Link } from "react-router-dom";
-import { Typewriter } from "react-simple-typewriter";
-import heroImage from "@/assets/IMG_0498 2.jpg";
+import { useState, useRef, useEffect } from "react";
+import { C } from "@/lib/portfolioData";
+import SectionWrapper from "@/components/Layouts/SectionWrapper";
 
-const Hero = () => {
-  const techIcons = [
-    { icon: Database, label: "Database", position: "top-28 left-16" },
-    { icon: Server, label: "Backend", position: "bottom-28 right-16" },
-  ];
+interface Props {
+  onNav: (id: string) => void;
+}
+
+const CMDS = [
+  "about",
+  "skills",
+  "projects",
+  "contact",
+  "whoami",
+  "help",
+  "clear",
+] as const;
+
+const Hero = ({ onNav }: Props) => {
+  const [lines, setLines] = useState<string[]>([
+    "Welcome to Tirth Terminal v2.0",
+    "────────────────────────────",
+    "Type 'help' to start",
+  ]);
+
+  const [input, setInput] = useState("");
+  const [history, setHistory] = useState<string[]>([]);
+  const [historyIndex, setHistoryIndex] = useState(-1);
+
+  const inputRef = useRef<HTMLInputElement>(null);
+  const termRef = useRef<HTMLDivElement>(null);
+
+  // ✅ ONLY terminal scroll (NOT page)
+  useEffect(() => {
+    if (termRef.current) {
+      termRef.current.scrollTop = termRef.current.scrollHeight;
+    }
+  }, [lines]);
+
+  const runCommand = (raw: string) => {
+    const cmd = raw.toLowerCase().trim();
+    let out: string[] = [];
+
+    switch (cmd) {
+      case "help":
+        out = [
+          "",
+          "about    → about section",
+          "skills   → skills section",
+          "projects → projects section",
+          "contact  → contact section",
+          "whoami   → about me",
+          "clear    → clear terminal",
+          "",
+        ];
+        break;
+
+      case "about":
+        out = ["→ opening about..."];
+        setTimeout(() => onNav("about"), 300);
+        break;
+
+      case "skills":
+        out = ["→ opening skills..."];
+        setTimeout(() => onNav("skills"), 300);
+        break;
+
+      case "projects":
+        out = ["→ opening projects..."];
+        setTimeout(() => onNav("projects"), 300);
+        break;
+
+      case "contact":
+        out = ["→ opening contact..."];
+        setTimeout(() => onNav("contact"), 300);
+        break;
+
+      case "whoami":
+        out = [
+          "",
+          "Tirth Patel — Backend Developer",
+          "Node.js · PostgreSQL · Redis",
+          "Mumbai · Immediate joiner",
+          "",
+        ];
+        break;
+
+      case "clear":
+        setLines([]);
+        return;
+
+      default:
+        out = [`bash: ${cmd}: command not found`, "type 'help'"];
+    }
+
+    setLines((prev) => [...prev, `$ ${raw}`, ...out]);
+  };
+
+  const submit = (cmd: string) => {
+    if (!cmd.trim()) return;
+
+    setHistory((prev) => [...prev, cmd]);
+    setHistoryIndex(-1);
+
+    runCommand(cmd);
+    setInput("");
+  };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-hero-gradient opacity-80" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(195_100%_50%_/_0.05),transparent_70%)]" />
+    <SectionWrapper id="hero" tight>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "50px",
+          alignItems: "center",
+          padding: "60px 0", // ✅ FIX (removed 100vh issue)
+        }}
+      >
+        {/* LEFT */}
+        <div>
+          <h1 style={{ fontSize: "70px", color: "#fff" }}>Tirth</h1>
+          <h1 style={{ fontSize: "70px", color: C.green }}>Patel</h1>
 
-      {/* Floating Icons */}
-      {techIcons.map((tech, index) => (
+          <p style={{ color: C.muted }}>
+            Backend Developer · Node.js · PostgreSQL · Redis
+          </p>
+        </div>
+
+        {/* RIGHT TERMINAL */}
         <div
-          key={tech.label}
-          className={`absolute hidden lg:block ${tech.position}`}
+          onMouseDown={(e) => e.preventDefault()} // 🔥 prevents scroll jump
+          onClick={() => inputRef.current?.focus()}
+          style={{
+            background: C.surface,
+            border: `1px solid ${C.border}`,
+            borderRadius: 8,
+            overflow: "hidden",
+          }}
         >
-          <div className="bg-card/40 border border-border rounded-md p-2 shadow-sm">
-            <tech.icon className="w-5 h-5 text-primary" />
-          </div>
-        </div>
-      ))}
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* LEFT CONTENT */}
-          <div className="space-y-8">
-            <h1 className="text-lg text-primary font-medium pt-6 md:pt-0">
-              👋 Hello Mate
-            </h1>
-
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              I'm <span className="text-primary">Tirth Patel</span>
-              <br />
-              <span className="bg-accent-gradient bg-clip-text text-transparent">
-                Backend Developer
-              </span>
-            </h2>
-
-            {/* Typewriter */}
-            <div>
-              <span className="bg-accent-gradient bg-clip-text text-transparent font-semibold text-xl md:text-xl tracking-wide leading-relaxed">
-                <Typewriter
-                  words={[
-                    "Building scalable APIs",
-                    "Handling transactions & concurrency",
-                    "Optimizing SQL queries",
-                    "Implementing secure authentication & RBAC",
-                    "Designing reliable backend systems",
-                  ]}
-                  loop
-                  cursor
-                  cursorStyle="|"
-                  typeSpeed={70}
-                  deleteSpeed={50}
-                  delaySpeed={1500}
-                />
-              </span>
-            </div>
-
-            {/* Description */}
-            <p className="max-w-lg text-muted-foreground text-base md:text-lg leading-relaxed">
-              I build fast, secure, and scalable backend systems using Node.js,
-              Express, and SQL databases — focusing on performance, data
-              consistency, and clean architecture.
-            </p>
-
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" asChild>
-                <Link to="/projects">View Projects</Link>
-              </Button>
-              <Button variant="outline" size="lg" asChild>
-                <Link to="/contact">Contact Me</Link>
-              </Button>
-            </div>
-
-            {/* Social Links */}
-            <div className="flex gap-4">
-              <Button variant="ghost" size="icon" asChild>
-                <a href="https://github.com/TirthWillLearn" target="_blank">
-                  <Github className="w-5 h-5" />
-                </a>
-              </Button>
-
-              <Button variant="ghost" size="icon" asChild>
-                <a href="https://linkedin.com/in/tirth-k-patel" target="_blank">
-                  <Linkedin className="w-5 h-5" />
-                </a>
-              </Button>
-
-              <Button
-                variant="ghost"
-                className="h-10 px-4 flex items-center gap-2"
-                asChild
-              >
-                <Link to="/resume">
-                  View Resume
-                  <ExternalLink className="w-5 h-5" />
-                </Link>
-              </Button>
-            </div>
+          {/* HEADER */}
+          <div
+            style={{
+              padding: "10px 14px",
+              borderBottom: `1px solid ${C.border}`,
+              fontSize: "12px",
+              color: C.muted,
+            }}
+          >
+            terminal
           </div>
 
-          {/* RIGHT IMAGE */}
-          <div className="relative pb-6 pr-6">
-            <div className="relative">
-              {/* Glow (controlled) */}
-              <div className="absolute inset-0 bg-accent-gradient rounded-2xl blur-2xl opacity-20 animate-glow-pulse" />
-
-              {/* Image */}
-              <img
-                src={heroImage}
-                alt="Tirth Patel"
-                className="relative z-10 w-full max-w-md mx-auto rounded-2xl shadow-2xl border border-primary/20 object-top"
-              />
-
-              {/* Badge FIXED */}
-              <div className="absolute bottom-4 right-4 z-20 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium shadow-md">
-                Available for work
+          {/* BODY */}
+          <div
+            ref={termRef}
+            style={{
+              height: 220, // ✅ compact
+              maxHeight: 220,
+              overflowY: "auto",
+              padding: "14px",
+              fontFamily: "monospace",
+              fontSize: "12px",
+              lineHeight: "1.7",
+              overscrollBehavior: "contain", // 🔥 prevents page scroll
+            }}
+          >
+            {lines.map((line, i) => (
+              <div key={i} style={{ color: C.text }}>
+                {line}
               </div>
+            ))}
+
+            {/* INPUT */}
+            <div style={{ display: "flex", gap: "6px" }}>
+              <span style={{ color: C.green }}>$</span>
+
+              <input
+                ref={inputRef}
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onFocus={(e) => {
+                  e.target.scrollIntoView({ block: "nearest" }); // 🔥 prevents jump
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    submit(input);
+                  }
+
+                  if (e.key === "ArrowUp") {
+                    e.preventDefault();
+                    if (!history.length) return;
+
+                    const idx =
+                      historyIndex === -1
+                        ? history.length - 1
+                        : Math.max(0, historyIndex - 1);
+
+                    setHistoryIndex(idx);
+                    setInput(history[idx]);
+                  }
+
+                  if (e.key === "ArrowDown") {
+                    e.preventDefault();
+                    if (historyIndex === -1) return;
+
+                    const idx = historyIndex + 1;
+
+                    if (idx >= history.length) {
+                      setHistoryIndex(-1);
+                      setInput("");
+                    } else {
+                      setHistoryIndex(idx);
+                      setInput(history[idx]);
+                    }
+                  }
+
+                  if (e.key === "Tab") {
+                    e.preventDefault();
+                    const match = CMDS.find((c) =>
+                      c.startsWith(input.toLowerCase()),
+                    );
+                    if (match) setInput(match);
+                  }
+                }}
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  outline: "none",
+                  color: C.text,
+                  width: "100%",
+                }}
+              />
             </div>
           </div>
         </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary/30 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse" />
-        </div>
-      </div>
-    </section>
+    </SectionWrapper>
   );
 };
 

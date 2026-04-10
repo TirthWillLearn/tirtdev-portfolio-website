@@ -6,37 +6,36 @@ const Resume = () => {
     <Layout>
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-5xl mx-auto">
-            {/* Heading */}
-            <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <div className="max-w-screen-xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 My <span className="text-primary">Resume</span>
               </h1>
-              <p className="text-muted-foreground">
-                View or download my resume below.
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                You can view or download my resume below.
               </p>
             </div>
 
-            {/* Card Container */}
-            <div className="bg-background/60 backdrop-blur-lg border border-border rounded-2xl shadow-lg p-6 md:p-10">
-              {/* Button */}
-              <div className="flex justify-center mb-8">
-                <a
-                  href="https://drive.google.com/file/d/18ffPnLaN1lszVogSTgS2o1f-QrTP1TkF/view"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button size="lg">Download Resume</Button>
-                </a>
-              </div>
+            {/* Download Button */}
+            <div className="text-center mb-12">
+              <a
+                href="https://drive.google.com/file/d/18ffPnLaN1lszVogSTgS2o1f-QrTP1TkF/view"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="hero" size="lg">
+                  Download Resume
+                </Button>
+              </a>
+            </div>
 
-              {/* Resume Preview */}
-              <div className="rounded-xl overflow-hidden border border-border shadow-md">
-                <iframe
-                  src="https://drive.google.com/file/d/18ffPnLaN1lszVogSTgS2o1f-QrTP1TkF/preview"
-                  className="w-full h-[75vh]"
-                ></iframe>
-              </div>
+            {/* Resume Preview */}
+            <div className="max-w-screen-xl mx-auto rounded-xl overflow-hidden shadow-card animate-fade-in">
+              <iframe
+                src="https://drive.google.com/file/d/18ffPnLaN1lszVogSTgS2o1f-QrTP1TkF/preview"
+                allow="autoplay"
+                className="w-full h-[80vh] border border-primary/20 rounded-lg"
+              ></iframe>
             </div>
           </div>
         </div>

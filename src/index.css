@@ -50,6 +50,7 @@
     --shadow-glow: 0 0 40px hsl(220 100% 60% / 0.1);
     --shadow-card: 0 10px 30px -10px hsl(220 100% 60% / 0.08);
   }
+
   :root {
     /* Dark theme base */
     --background: 218 23% 5%;
@@ -112,4 +113,38 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+@keyframes waving-hand {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-waving-hand {
+  animation-name: waving-hand;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  transform-origin: bottom right;
+  display: inline-block;
 }

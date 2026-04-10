@@ -7,15 +7,13 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="min-h-screen bg-hero-gradient">
+    <div className="min-h-screen flex flex-col bg-hero-gradient">
       <Navigation />
-      <main className="pt-16">
-        {children}
-        <footer className="text-sm text-muted-foreground text-center py-6 border-t border-border mt-20">
-          © 2025 <span className="text-primary font-medium">Tirth Patel</span>.
-          All rights reserved.
-        </footer>
-      </main>
+      <main className="flex-1 pt-16">{children}</main>
+      <footer className="text-sm text-muted-foreground text-center py-6 border-t border-border">
+        © 2025 <span className="text-primary font-medium">Tirth Patel</span>.
+        All rights reserved.
+      </footer>
     </div>
   );
 };
