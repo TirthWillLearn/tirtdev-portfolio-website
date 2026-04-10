@@ -204,7 +204,7 @@ export const STACK_JSON: Record<string, string[]> = {
   database: ["PostgreSQL", "MySQL", "Redis"],
   auth: ["JWT", "RBAC", "bcrypt"],
   realtime: ["Socket.io", "WebSockets"],
-  cloud: ["AWS EC2", "AWS RDS", "Render"],
+  cloud: ["AWS EC2", "AWS RDS"],
   devops: ["Docker", "Render", "Vercel"],
   api_design: ["REST", "Pagination", "Rate Limiting", "Versioning"],
   testing: ["Postman", "Thunder Client"],
