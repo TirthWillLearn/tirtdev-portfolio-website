@@ -30,7 +30,7 @@ const Skills = () => (
       Stack & Skills
     </h2>
 
-    {/* stack.json block */}
+    {/* stack.json — bigger block */}
     <div
       className="rounded-lg overflow-hidden mb-9"
       style={{ background: C.surface, border: `1px solid ${C.border}` }}
@@ -60,14 +60,25 @@ const Skills = () => (
         >
           stack.json
         </span>
+        <span
+          className="ml-auto text-[10px]"
+          style={{ fontFamily: "'JetBrains Mono',monospace", color: C.muted }}
+        >
+          {Object.keys(STACK_JSON).length} categories ·{" "}
+          {Object.values(STACK_JSON).flat().length} technologies
+        </span>
       </div>
       <div
-        className="p-5 overflow-x-auto leading-loose text-[12.5px]"
-        style={{ fontFamily: "'JetBrains Mono',monospace" }}
+        className="p-5 overflow-x-auto"
+        style={{
+          fontFamily: "'JetBrains Mono',monospace",
+          fontSize: 12.5,
+          lineHeight: 2,
+        }}
       >
         <div style={{ color: `${C.text}66` }}>{"{"}</div>
         {Object.entries(STACK_JSON).map(([key, vals], i, arr) => (
-          <div key={key} className="pl-6">
+          <div key={key} className="pl-6 flex flex-wrap items-baseline gap-0">
             <span style={{ color: C.blue }}>"{key}"</span>
             <span style={{ color: `${C.text}55` }}>: [</span>
             {vals.map((v, j) => (
@@ -86,7 +97,7 @@ const Skills = () => (
       </div>
     </div>
 
-    {/* Concepts label */}
+    {/* Concepts */}
     <div
       className="text-[11px] tracking-widest uppercase mb-4"
       style={{ fontFamily: "'JetBrains Mono',monospace", color: C.muted }}
@@ -95,8 +106,7 @@ const Skills = () => (
       concepts i've actually used — not just read about
     </div>
 
-    {/* Concept cards: 1 col mobile, 2 col md+ */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
       {CONCEPTS.map((c) => (
         <div
           key={c.title}
@@ -119,26 +129,99 @@ const Skills = () => (
       ))}
     </div>
 
-    {/* Learning note */}
+    {/* Currently levelling up — replaced "studying" with a proper section */}
     <div
-      className="mt-5 p-4 rounded"
-      style={{ border: `1px solid ${C.border}` }}
+      className="rounded-lg overflow-hidden"
+      style={{ border: `1px solid ${C.border}`, background: C.surface }}
     >
-      <p
-        className="text-[12.5px] leading-relaxed"
-        style={{ fontFamily: "'JetBrains Mono',monospace", color: C.muted }}
+      <div
+        className="px-5 py-3"
+        style={{
+          borderBottom: `1px solid ${C.border}`,
+          background: `${C.surface}cc`,
+        }}
       >
-        <span style={{ color: C.green }}>{"// "}</span>
-        Currently studying:{" "}
-        <span style={{ color: `${C.text}88` }}>
-          System Design (Alex Xu), DSA in Java, PostgreSQL internals. Bias
-          toward understanding{" "}
+        <span
+          className="text-[11px] tracking-widest uppercase"
+          style={{ fontFamily: "'JetBrains Mono',monospace", color: C.green }}
+        >
+          {"// "}
+          <span style={{ color: C.muted }}>currently levelling up</span>
         </span>
-        <span style={{ color: C.amber }}>why</span>
-        <span style={{ color: `${C.text}88` }}> before </span>
-        <span style={{ color: C.amber }}>how</span>
-        <span style={{ color: `${C.text}88` }}>.</span>
-      </p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
+        {[
+          {
+            area: "System Design",
+            items: [
+              "Horizontal scaling",
+              "Load balancing",
+              "Database sharding",
+              "Caching strategies",
+              "CAP theorem",
+            ],
+            status: "active",
+          },
+          {
+            area: "DSA in Java",
+            items: [
+              "Arrays & Hash Maps",
+              "Two Pointers",
+              "Sliding Window",
+              "Binary Search",
+              "Trees & Graphs",
+            ],
+            status: "active",
+          },
+          {
+            area: "PostgreSQL Internals",
+            items: [
+              "MVCC & isolation levels",
+              "Index types (B-tree, GIN)",
+              "Query planner",
+              "WAL & replication",
+              "Partitioning",
+            ],
+            status: "active",
+          },
+        ].map((block, i, arr) => (
+          <div
+            key={block.area}
+            className="p-5"
+            style={{
+              borderRight:
+                i < arr.length - 1 ? `1px solid ${C.border}` : "none",
+            }}
+          >
+            <div className="flex items-center gap-2 mb-3">
+              <span
+                className="w-1.5 h-1.5 rounded-full"
+                style={{ background: C.green, boxShadow: `0 0 4px ${C.green}` }}
+              />
+              <span
+                className="text-[12px] font-semibold"
+                style={{ fontFamily: "'Oxanium',sans-serif", color: "#fff" }}
+              >
+                {block.area}
+              </span>
+            </div>
+            <ul className="space-y-1.5">
+              {block.items.map((item) => (
+                <li
+                  key={item}
+                  className="text-[11px] flex items-center gap-2"
+                  style={{
+                    fontFamily: "'JetBrains Mono',monospace",
+                    color: C.muted,
+                  }}
+                >
+                  <span style={{ color: C.dim }}>›</span> {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 );

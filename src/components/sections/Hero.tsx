@@ -78,9 +78,10 @@ const Hero = ({ onNav }: Props) => {
         out = [
           "",
           "  Tirth Patel — Backend Developer",
-          "  Node.js · Express · TypeScript",
-          "  PostgreSQL · Redis · Docker · AWS",
-          "  Mumbai · Immediate joiner",
+          "  Node.js · Express · TypeScript · PostgreSQL",
+          "  Redis · Docker · AWS EC2 · AWS RDS",
+          "  Socket.io · JWT · RBAC · bcrypt",
+          "  Mumbai · Fresher · Immediate joiner",
           "",
         ];
         break;
@@ -186,9 +187,9 @@ const Hero = ({ onNav }: Props) => {
               color: `${C.text}88`,
             }}
           >
-            <span style={{ color: C.dim }}>{"// "}</span>
-            Building fast, secure APIs with Node.js, PostgreSQL and Redis.
-            Self-taught. Mumbai.
+            <span style={{ color: C.dim }}>{"// "}</span>I build fast, secure,
+            production-ready backend systems. Node.js · PostgreSQL · Redis ·
+            Docker · AWS. Mumbai.
           </p>
 
           {/* CTAs */}

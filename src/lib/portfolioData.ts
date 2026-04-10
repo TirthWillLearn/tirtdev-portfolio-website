@@ -178,13 +178,18 @@ export const PROJECTS: Project[] = [
 
 // ── STACK ─────────────────────────────────────────────────────
 export const STACK_JSON: Record<string, string[]> = {
-  runtime: ["Node.js", "Express.js"],
+  runtime: ["Node.js v20", "Express.js", "REST APIs"],
   language: ["TypeScript", "JavaScript ES6+", "SQL"],
   database: ["PostgreSQL", "MySQL", "Redis"],
-  auth: ["JWT", "RBAC", "bcrypt"],
-  realtime: ["Socket.io", "WebSockets"],
-  devops: ["Docker", "AWS EC2", "AWS RDS", "Render"],
-  tools: ["Git", "Postman", "Linux"],
+  orm: ["Raw SQL", "Query Builder", "Prisma (learning)"],
+  auth: ["JWT", "RBAC", "bcrypt", "OAuth2 (basic)"],
+  realtime: ["Socket.io", "WebSockets", "Redis Pub/Sub"],
+  cloud: ["AWS EC2", "AWS RDS", "AWS S3 (basic)"],
+  devops: ["Docker", "Docker Compose", "Render", "Vercel"],
+  api_design: ["REST", "Pagination", "Rate Limiting", "Versioning"],
+  testing: ["Postman", "Thunder Client", "Manual API testing"],
+  tools: ["Git", "GitHub", "Linux", "VS Code"],
+  learning: ["System Design", "DSA in Java", "PostgreSQL internals"],
 };
 
 // ── CONCEPTS ─────────────────────────────────────────────────

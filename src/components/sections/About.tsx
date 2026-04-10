@@ -9,20 +9,23 @@ const INFO = [
   },
   { k: "Location", v: "Mumbai, India (Borivali / Naigaon area)" },
   { k: "Status", v: "Fresher · Immediate joiner · Open to relocation" },
-  { k: "Target CTC", v: "₹3 – 4.8 LPA" },
-  { k: "Role", v: "Backend Developer · Node.js Developer" },
+  { k: "Preference", v: "Full-time · Backend Developer · Node.js Developer" },
+  {
+    k: "Interests",
+    v: "Backend Systems · Cloud Computing · AWS · Open Source",
+  },
 ];
 
 const BIO = [
-  "I'm a self-taught backend developer based in Mumbai. My focus is building reliable, performant APIs — not flashy UIs.",
-  "I discovered backend development on my own after a winding path through college. Once I found it, I went deep: built projects from scratch, understood SQL transactions, row-level locking, RBAC, Redis — not by copy-pasting but by actually breaking things and figuring out why.",
-  "I'm a fresher, which means I haven't shipped to millions of users yet. But every project I've built reflects how I actually think about backend systems — data consistency, security boundaries, and clean architecture.",
-  "Currently studying system design seriously (reading Alex Xu), practising DSA in Java, and looking for my first backend role where I can keep growing fast.",
+  "I'm a self-taught backend developer from Mumbai. I build reliable, performant server-side systems — not UIs. My focus is on what happens after the request hits the server.",
+  "I found backend development on my own after a long, winding path through college. Once I found it, I went deep — built real projects from scratch, broke things intentionally, and figured out why they broke. SQL transactions, row-level locking, RBAC, Redis, Docker — none of it was copy-pasted. Every piece was understood before it was written.",
+  "I haven't shipped to millions of users yet. But every decision in my projects — from database indexing to error handling to auth middleware — reflects how I actually think about building backend systems. Data consistency first. Security at the boundary. Clean architecture throughout.",
+  "I'm actively looking for my first full-time backend role where I can grow fast, contribute meaningfully, and work with engineers I can learn from.",
 ];
 
 const About = () => (
   <SectionWrapper id="about">
-    {/* Section label */}
+    {/* Label */}
     <div className="flex items-center gap-3 mb-8">
       <span className="text-[11px]" style={{ color: C.green }}>
         {"// "}
@@ -63,7 +66,7 @@ const About = () => (
       ))}
     </div>
 
-    {/* Info grid: 1 col mobile, 2 col md+ */}
+    {/* Info grid */}
     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
       {INFO.map(({ k, v }) => (
         <div
