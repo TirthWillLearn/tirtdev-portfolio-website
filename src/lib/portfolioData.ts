@@ -59,34 +59,55 @@ export interface Concept {
 export const BOOT_LINES: BootLine[] = [
   { t: "$ node portfolio.js --env=production", type: "cmd" },
   { t: "", type: "blank" },
-  { t: "[  INIT  ] Bootstrapping runtime...", type: "init" },
-  { t: "[   OK   ] Node.js v20.11.0", type: "ok" },
-  { t: "[  INIT  ] Establishing database connection...", type: "init" },
-  { t: "[   OK   ] PostgreSQL connected (AWS RDS)", type: "ok" },
-  { t: "[  INIT  ] Warming Redis cache...", type: "init" },
-  { t: "[   OK   ] Redis: ready, 0 keys loaded", type: "ok" },
-  { t: "[  INIT  ] Registering middleware stack...", type: "init" },
-  { t: "[   OK   ] JWT Authentication middleware", type: "ok" },
-  { t: "[   OK   ] RBAC authorization layer", type: "ok" },
-  { t: "[   OK   ] Rate limiter: 100 req / 15 min", type: "ok" },
-  { t: "[   OK   ] Global error handler", type: "ok" },
-  { t: "[   OK   ] Request validation (Zod)", type: "ok" },
-  { t: "[  INIT  ] Mounting API routes...", type: "init" },
-  { t: "[   OK   ] POST   /api/auth/register", type: "route" },
-  { t: "[   OK   ] POST   /api/auth/login", type: "route" },
-  { t: "[   OK   ] GET    /api/orders          (paginated)", type: "route" },
-  {
-    t: "[   OK   ] POST   /api/orders          (transactional)",
-    type: "route",
-  },
-  { t: "[   OK   ] PATCH  /api/orders/:id/status", type: "route" },
-  { t: "[   OK   ] DELETE /api/orders/:id", type: "route" },
+
+  // Runtime
+  { t: "[INIT] Starting Node.js runtime...", type: "init" },
+  { t: "[OK] Runtime: Node.js v20.11.0", type: "ok" },
+
+  // Environment
+  { t: "[INIT] Loading environment variables...", type: "init" },
+  { t: "[OK] ENV loaded (production)", type: "ok" },
+
+  // Database
+  { t: "[INIT] Connecting to PostgreSQL (AWS RDS)...", type: "init" },
+  { t: "[OK] DB connection established (pool: 10)", type: "ok" },
+
+  // Cache
+  { t: "[INIT] Initializing Redis cache...", type: "init" },
+  { t: "[WARN] Redis cache empty — warming up...", type: "init" },
+  { t: "[OK] Redis ready", type: "ok" },
+
+  // Middleware
+  { t: "[INIT] Applying middleware pipeline...", type: "init" },
+  { t: "[OK] JWT Authentication enabled", type: "ok" },
+  { t: "[OK] RBAC authorization layer active", type: "ok" },
+  { t: "[OK] Rate limiter: 100 req / 15min", type: "ok" },
+  { t: "[OK] Request validation (Zod)", type: "ok" },
+  { t: "[OK] Global error handler registered", type: "ok" },
+
+  // System thinking (THIS IS 🔥)
+  { t: "[INFO] Prioritizing data consistency over speed", type: "init" },
+
+  // Routes
+  { t: "[INIT] Mounting API routes...", type: "init" },
+  { t: "[OK] /api/auth (public)", type: "route" },
+  { t: "[OK] /api/products (cached)", type: "route" },
+  { t: "[OK] /api/orders (transactional)", type: "route" },
+  { t: "[OK] /api/orders/:id/status (RBAC protected)", type: "route" },
+
   { t: "", type: "blank" },
+
+  // Divider
   { t: "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━", type: "div" },
-  { t: "  Portfolio server ready on port 3000", type: "ready" },
-  { t: "  Developer  →  Tirth Patel", type: "ready" },
-  { t: "  Role       →  Backend Developer", type: "ready" },
-  { t: "  Status     →  available_for_hire ✓", type: "status" },
+
+  // Final status (THIS PART MATTERS A LOT)
+  { t: "  SYSTEM READY", type: "ready" },
+  { t: "  API STATUS  →  OPERATIONAL", type: "status" },
+  { t: "  MODE        →  PRODUCTION", type: "ready" },
+  { t: "  DEV         →  Tirth Patel", type: "ready" },
+  { t: "  ROLE        →  Backend Engineer", type: "ready" },
+  { t: "  STATUS      →  available_for_hire ✓", type: "status" },
+
   { t: "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━", type: "div" },
 ];
 
@@ -178,16 +199,16 @@ export const PROJECTS: Project[] = [
 
 // ── STACK ─────────────────────────────────────────────────────
 export const STACK_JSON: Record<string, string[]> = {
-  runtime:    ["Node.js v20", "Express.js", "REST APIs"],
-  language:   ["TypeScript", "JavaScript ES6+", "SQL"],
-  database:   ["PostgreSQL", "MySQL", "Redis"],
-  auth:       ["JWT", "RBAC", "bcrypt"],
-  realtime:   ["Socket.io", "WebSockets"],
-  cloud:      ["AWS EC2", "AWS RDS", "Render"],
-  devops:     ["Docker", "Render", "Vercel"],
+  runtime: ["Node.js v20", "Express.js", "REST APIs"],
+  language: ["TypeScript", "JavaScript ES6+", "SQL"],
+  database: ["PostgreSQL", "MySQL", "Redis"],
+  auth: ["JWT", "RBAC", "bcrypt"],
+  realtime: ["Socket.io", "WebSockets"],
+  cloud: ["AWS EC2", "AWS RDS", "Render"],
+  devops: ["Docker", "Render", "Vercel"],
   api_design: ["REST", "Pagination", "Rate Limiting", "Versioning"],
-  testing:    ["Postman", "Thunder Client"],
-  tools:      ["Git", "GitHub", "Linux", "VS Code"],
+  testing: ["Postman", "Thunder Client"],
+  tools: ["Git", "GitHub", "Linux", "VS Code"],
 };
 // ── CONCEPTS ─────────────────────────────────────────────────
 export const CONCEPTS: Concept[] = [
