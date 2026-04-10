@@ -30,7 +30,7 @@ const Skills = () => (
       Stack & Skills
     </h2>
 
-    {/* stack.json — bigger block */}
+    {/* stack.json */}
     <div
       className="rounded-lg overflow-hidden mb-9"
       style={{ background: C.surface, border: `1px solid ${C.border}` }}
@@ -129,7 +129,7 @@ const Skills = () => (
       ))}
     </div>
 
-    {/* Currently levelling up — replaced "studying" with a proper section */}
+    {/* Currently levelling up */}
     <div
       className="rounded-lg overflow-hidden"
       style={{ border: `1px solid ${C.border}`, background: C.surface }}
@@ -160,7 +160,6 @@ const Skills = () => (
               "Caching strategies",
               "CAP theorem",
             ],
-            status: "active",
           },
           {
             area: "DSA in Java",
@@ -171,7 +170,6 @@ const Skills = () => (
               "Binary Search",
               "Trees & Graphs",
             ],
-            status: "active",
           },
           {
             area: "PostgreSQL Internals",
@@ -182,7 +180,6 @@ const Skills = () => (
               "WAL & replication",
               "Partitioning",
             ],
-            status: "active",
           },
         ].map((block, i, arr) => (
           <div
